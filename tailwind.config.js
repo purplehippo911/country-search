@@ -12,6 +12,20 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors:{
+        // Dark Mode Elements
+        "DarkBlue": "hsl(209, 23%, 22%)",
+        // Dark Mode Background
+        "DarkBg": "hsl(207, 26%, 17%)",
+        // Light Mode Text
+        "LightText": "hsl(200, 15%, 8%)",
+        //  Light Mode Input
+        "DarkGray": "hsl(0, 0%, 52%)",
+        // Light Mode Background
+        "LightBg": "hsl(0, 0%, 98%)",
+        // Dark Mode Text & Light Mode Elements
+        "White": "hsl(0, 0%, 100%)"
+      }
     },
   },
   plugins: [],
