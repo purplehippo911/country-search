@@ -8,13 +8,16 @@ const Search = () => {
                 <input
                  className="w-full bg-DarkBlue text-DarkGray px-20 py-5 outline-none"
                  type="text"
-                 value="Search for a country..."
+                 placeholder="Search for a country..."
                  id="searchInput"
                  />
             </section>
 
             <section className="mt-5">
-                <select name="filter" value="Filter by Region" className="bg-DarkBlue w-1/2 py-5 text-center">
+                <select name="filter" id="filter"
+                 defaultValue="Filter by Region"
+                  className="bg-DarkBlue w-1/2 py-5 text-center">
+                    <option value="Filter by Region">Filter by Region</option>
                     <option value="Africa">Africa</option>
                     <option value="America">America</option>
                     <option value="Asia">Asia</option>
