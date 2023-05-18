@@ -24,7 +24,7 @@ export default function Home({countries}) {
   useEffect(() => {
     setSearchedCountries(countries)
   }, [countries]);
-  
+
   const searchedCountries = useStore(state => state.searchedCountries)
   
   return (
@@ -32,7 +32,7 @@ export default function Home({countries}) {
       <div className='container m-auto'>
         <Search countries={countries}/>
         {searchedCountries.map(country => (
-            <Card key={country} country={country}/>
+            <Card key={country.name.common} country={country}/>
         ))}
 
       </div>
