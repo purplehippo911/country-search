@@ -1,4 +1,5 @@
 const Card = ({country}) => {
+
     return ( 
         <article>
             <picture>
