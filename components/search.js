@@ -1,5 +1,7 @@
-import { IoIosSearch } from "react-icons/io"
 import { useState } from "react" ;
+
+// search-icon and store for stage manegment
+import { IoIosSearch } from "react-icons/io"
 import useStore from '../store/store';
 
 const Search = ({countries}) =>  {
@@ -41,11 +43,14 @@ const Search = ({countries}) =>  {
 
     return ( 
         <div className="div">
-            <form action="" onSubmit={((e) => e.preventDefault())}>
+            <form action="" 
+            onSubmit={((e) => e.preventDefault())}
+            className="grid lg:grid-cols-2"
+            >
                 <section className="flex items-center content-center bg-DarkBlue">
                     <IoIosSearch className="cursor-pointer"/>
                     <input
-                     className="w-full bg-DarkBlue text-DarkGray px-20 py-5 outline-none"
+                     className="w-full bg-DarkBlue text-white px-20 py-5 outline-none"
                      type="text"
                      placeholder="Search for a country..."
                      id="searchInput"
@@ -53,10 +58,10 @@ const Search = ({countries}) =>  {
                      onChange={filterCountry}
                      />
                 </section>
-                <section className="mt-5">
+                <section className="mt-5 md:mt-0 md:w-full md:grid md:justify-end">
                     <select name="filter" id="filter"
                      defaultValue="Filter by Region"
-                      className="bg-DarkBlue w-1/2 py-5 text-center"
+                      className="bg-DarkBlue w-1/2 py-5 text-center justify-self-end md:w-full md:px-10"
                       onChange={filterRegions}>
                         <option value="Filter by Region">Filter by Region</option>
                         <option value="Africa">Africa</option>

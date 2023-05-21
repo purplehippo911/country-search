@@ -12,6 +12,10 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      gridTemplateColumns: {
+        'auto-fill-500': 'repeat(auto-fill, minmax(500px, 1fr)',
+        'auto-fit-100': 'repeat(auto-fill, minmax(100px, 1fr)'
+      },
       colors:{
         // Dark Mode Elements
         "DarkBlue": "hsl(209, 23%, 22%)",

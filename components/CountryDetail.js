@@ -11,10 +11,6 @@ const CountryDetail = ({countries, country}) => {
         rawBorderCountries.includes(borderCountry.cioc)   
     );
 
-
-    console.log(rawBorderCountries);
-    console.log(borderCountries);
-
     return ( 
         <article className="m-auto">
                 <div className="container flex flex-col gap-5">
