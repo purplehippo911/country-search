@@ -29,13 +29,13 @@ export default function Home({countries}) {
   
   return (
     <main>
-      <div className='container m-auto'>
+      <article className='container m-auto flex flex-col gap-10'>
         <Search countries={countries}/>
         {searchedCountries.map(country => (
             <Card key={country.name.common} country={country}/>
         ))}
 
-      </div>
+      </article>
     </main> 
   )
 }
