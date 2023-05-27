@@ -5,6 +5,9 @@ const CountryDetail = ({countries, country}) => {
 
     const languageObject = Object.values(country.languages);
     const currencyObject = Object.values(country.currencies);
+
+    const nativeNames = Object.values(country.name.nativeName)
+    const nativeName = nativeNames.map(nativeName => nativeName.common)
     
     const rawBorderCountries = country.borders.map((border) => border) 
     const borderCountries = countries.filter((borderCountry) => 
@@ -12,10 +15,10 @@ const CountryDetail = ({countries, country}) => {
     );
 
     return ( 
-        <article className="m-auto">
+        <article className="ml-auto">
                 <div className="container flex flex-col gap-5">
                     <Link href="/">
-                        <button>Back</button>
+                        <button className="bg-DarkBlue p-5">Back</button>
                     </Link>
 
                     <picture>
@@ -23,12 +26,21 @@ const CountryDetail = ({countries, country}) => {
                     </picture>
 
                     <section>
-                        <h2>{country.name?.common}</h2>
-                        {/* <p>Population:{country.name.nativeName[0].common}</p> */}
-                        <p>Population:{country.population}</p>
-                        <p>Region:{country.region}</p>
-                        <p>Population:{country.subregion}</p>
-                        <p>Capital:{country.capital[0]}</p>
+                        <h2 className="font-bold text-xl">{country.name?.common}</h2>
+                        <p>
+                            <strong> Native Name: </strong>
+                            {nativeName[0]}
+                        </p>
+                        <p>
+                            <strong> Population: </strong>
+                            {country.population}
+                        </p>
+                        <p>
+                            <strong> Region:</strong>
+                            {country.region}
+                        </p>
+                        <p><strong> Subregion: </strong>{country.subregion}</p>
+                        <p> <strong>Capital:</strong> {country.capital[0]}</p>
                     </section>
 
                     <section> 
@@ -49,7 +61,8 @@ const CountryDetail = ({countries, country}) => {
                         <h3 className="font-bold">Border Countries:</h3>
                         <section className="flex gap-4">
                             {borderCountries.map((borderCountry) => (
-                                <button key={borderCountry.name.common}>{borderCountry.name.common}</button>
+                                <Link href={`/countries/${borderCountry.name.common}`}>
+                                    <button key={borderCountry.name.common}>{borderCountry.name.common}</button></Link>
                             ))}
                         </section>
                     </section>

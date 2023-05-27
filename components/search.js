@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react" ;
 
 // search-icon and store for stage manegment
@@ -8,6 +9,9 @@ const Search = ({countries}) =>  {
 
     const [searchValue, setSearchValue] = useState("");
     const setSearchedCountries = useStore(state => state.setSearchedCountries);
+    const searchedCountries = useStore(state => state.searchedCountries);
+
+    const router = useRouter();
 
     // for search functions to search for countries
     function filterCountry(e) {
@@ -18,17 +22,15 @@ const Search = ({countries}) =>  {
             const filteredCountries = countries.filter(country => 
                 country.name.common.toLowerCase().includes(value)
             );
-            // console.log(filteredCountries)
             setSearchedCountries(filteredCountries)
         } else {
             setSearchedCountries(countries)
         }
+        return value;
     }
 
     // filter functions
-    
     function filterRegions(e) {
-        // const filterOptions = document.querySelectorAll("#filter > *")
         const value = e.target.value.toLowerCase().trim();
 
         if (value === "filter by region") {
@@ -41,20 +43,46 @@ const Search = ({countries}) =>  {
         }
     }
 
+    function handleEnter(e) {
+        e.preventDefault();
+
+        // checking if the value of the searchbar is not empty
+        if(searchValue != "") {
+            // Check if searchvalue matches any country name
+            const searchValueExists = searchedCountries.find((country) => 
+                country.name.common.toLowerCase().includes(searchValue)
+            );
+            
+            if(searchValueExists) {
+                // for if there's only one country left, so that countries page will be rendered, when the 'enter'-button is clicked
+                if(searchedCountries.length == 1) {
+                    const countryValue = searchedCountries.map(c => c.name.common)
+                    router.push(`/countries/${countryValue}`);
+                } else {
+                    // Take the first country, if there's multiple left
+                    router.push(`/countries/${searchedCountries[0].name.common}`);
+                }
+            }
+        } else {
+            return searchValue
+        }
+
+    }
+
     return ( 
         <div className="div">
             <form action="" 
-            onSubmit={((e) => e.preventDefault())}
+            onSubmit={(e) => handleEnter(e)}
             className="grid lg:grid-cols-2"
             >
                 <section className="flex items-center content-center bg-DarkBlue">
-                    <IoIosSearch className="cursor-pointer"/>
+                    <IoIosSearch className="cursor-pointer ml-4 scale-150" onClick={(e) => handleEnter(e)}/>
                     <input
                      className="w-full bg-DarkBlue text-white px-20 py-5 outline-none"
                      type="text"
                      placeholder="Search for a country..."
                      id="searchInput"
-                     value={searchValue}
+                     defaultValue={searchValue}
                      onChange={filterCountry}
                      />
                 </section>

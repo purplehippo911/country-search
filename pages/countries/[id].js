@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Link from 'next/link';
 
 import CountryDetail from "@comps/CountryDetail";
 
@@ -19,10 +20,18 @@ export default function Country({countries}) {
     const mainCountry = countries.find((country) => country.name.common.toLowerCase() == id.id.toLowerCase());
 
     if (!mainCountry) {
-        return <div>Country not found</div>;
+        return (
+          <div className="p-5">
+            <p>Country not found</p> 
+            <Link href="/">
+              <button className="bg-DarkBlue p-5">Back</button>
+            </Link>
+          </div>
+        )
     }
     
     return (
+      
        <CountryDetail countries={countries} country={mainCountry}/>
     )
 
