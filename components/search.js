@@ -3,7 +3,7 @@ import { useState } from "react" ;
 
 // search-icon and store for stage manegment
 import { IoIosSearch } from "react-icons/io"
-import useStore from '../store/store';
+import useStore from '@store/store';
 
 const Search = ({countries}) =>  {
 
@@ -20,7 +20,7 @@ const Search = ({countries}) =>  {
 
         if (value && value.length > 0) {
             const filteredCountries = countries.filter(country => 
-                country.name.common.toLowerCase().includes(value)
+                country[0].toLowerCase().includes(value)
             );
             setSearchedCountries(filteredCountries)
         } else {
@@ -31,15 +31,16 @@ const Search = ({countries}) =>  {
 
     // filter functions
     function filterRegions(e) {
-        const value = e.target.value.toLowerCase().trim();
+        const value = e.target.value;
 
-        if (value === "filter by region") {
+        if (value === "Filter by Region") {
             setSearchedCountries(countries);
         } else {
             const filteredCountries = countries.filter(
-                (country) => country.region.toLowerCase() === value
+                (country) => country[10] === value
             );    
             setSearchedCountries(filteredCountries);
+            console.log(filteredCountries)
         }
     }
 
@@ -50,17 +51,17 @@ const Search = ({countries}) =>  {
         if(searchValue != "") {
             // Check if searchvalue matches any country name
             const searchValueExists = searchedCountries.find((country) => 
-                country.name.common.toLowerCase().includes(searchValue)
+                country[0].toLowerCase().includes(searchValue)
             );
             
             if(searchValueExists) {
                 // for if there's only one country left, so that countries page will be rendered, when the 'enter'-button is clicked
                 if(searchedCountries.length == 1) {
-                    const countryValue = searchedCountries.map(c => c.name.common)
+                    const countryValue = searchedCountries.map(c => c[0])
                     router.push(`/countries/${countryValue}`);
                 } else {
                     // Take the first country, if there's multiple left
-                    router.push(`/countries/${searchedCountries[0].name.common}`);
+                    router.push(`/countries/${searchedCountries[0]}`);
                 }
             }
         } else {
@@ -70,15 +71,14 @@ const Search = ({countries}) =>  {
     }
 
     return ( 
-        <div className="div">
-            <form action="" 
+        <form action="" 
             onSubmit={(e) => handleEnter(e)}
             className="grid lg:grid-cols-2"
             >
-                <section className="flex items-center content-center bg-DarkBlue">
+                <section className="flex items-center content-center bg-White dark:bg-DarkBlue">
                     <IoIosSearch className="cursor-pointer ml-4 scale-150" onClick={(e) => handleEnter(e)}/>
                     <input
-                     className="w-full bg-DarkBlue text-white px-20 py-5 outline-none"
+                     className="w-full px-20 py-5 outline-none bg-White dark:bg-DarkBlue"
                      type="text"
                      placeholder="Search for a country..."
                      id="searchInput"
@@ -89,7 +89,7 @@ const Search = ({countries}) =>  {
                 <section className="mt-5 md:mt-0 md:w-full md:grid md:justify-end">
                     <select name="filter" id="filter"
                      defaultValue="Filter by Region"
-                      className="bg-DarkBlue w-1/2 py-5 text-center justify-self-end md:w-full md:px-10"
+                      className="bg-White dark:bg-DarkBlue w-1/2 py-5 text-center justify-self-end md:w-full md:px-10"
                       onChange={filterRegions}>
                         <option value="Filter by Region">Filter by Region</option>
                         <option value="Africa">Africa</option>
@@ -99,9 +99,7 @@ const Search = ({countries}) =>  {
                         <option value="Oceania">Oceania</option>
                     </select>
                 </section>
-            </form>
-            
-        </div>
+        </form>            
      );
 }
  

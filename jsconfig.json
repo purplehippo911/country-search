@@ -2,7 +2,8 @@
   "compilerOptions": {
     "paths": {
       "@styles/*": ["./styles/*"],
-      "@comps/*": ["./components/*"]
+      "@comps/*": ["./components/*"],
+      "@store/*": ["./store/*"]
     }
   }
 }

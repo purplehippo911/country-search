@@ -1,6 +1,3 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
 import useStore from '../store/store';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -8,12 +5,10 @@ import { useState } from 'react';
 import Search from '@comps/search'
 import Card from '@comps/Card'
 
-const inter = Inter({ subsets: ['latin'] })
-
-
+// fields=flag,name,region,population,capital,alpha3Code 
 export const getServerSideProps = async () => {
-  
-  const res = await fetch("https://restcountries.com/v3.1/all?fields=flag,name,region,population,capital,alpha3Code");
+  const key = "6dbtGyWkDunGozjumEHsSrSkdpQ1yr5kbEfJ5mUC"
+  const res = await fetch(`https://countryapi.io/api/all?apikey=${key}`);
   const data = await res.json();
   
   return {
@@ -24,24 +19,26 @@ export const getServerSideProps = async () => {
 export default function Home({countries}) {
   const [isLoading, setIsLoading] = useState(true);
   const setSearchedCountries = useStore(state => state.setSearchedCountries);
+  const searchedCountries = useStore(state => state.searchedCountries)
+  const countriesArray = Object.values(countries)
+  const countriesNew = countriesArray.map(country => Object.values(country))
   
   useEffect(() => {
-    setSearchedCountries(countries)
+    setSearchedCountries(countriesNew)
     setIsLoading(false)
   }, [countries]);
 
-  const searchedCountries = useStore(state => state.searchedCountries)
   
   return (
     <main>
       <article className='container m-auto flex flex-col gap-10'>
-        <Search countries={countries}/>
+        <Search countries={searchedCountries}/>
 
         {isLoading && <div>Countries are loading...</div>}
 
-        {!isLoading && <div class="grid grid-col-1 gap-8 md:grid-cols-4">
+        {!isLoading && <div className="grid grid-col-1 gap-8 md:grid-cols-4">
           {searchedCountries.map(country => (
-              <Card key={country.name.common} country={country}/>
+              <Card key={country[0]} country={country}/>
           ))}
         </div>}
 

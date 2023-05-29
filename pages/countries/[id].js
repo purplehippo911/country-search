@@ -1,30 +1,25 @@
+import useStore from "@store/store";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Link from 'next/link';
 
 import CountryDetail from "@comps/CountryDetail";
 
-export const getServerSideProps = async () => {
+export default function Country() {
 
-  const res = await fetch("https://restcountries.com/v3.1/all?fields=flag,name,region,population,capital,alpha3Code,tld,subregion,currencies,languages,borders,cioc");
-  const data = await res.json();
-
-  return {
-    props: { countries:data }
-  };
-}
-
-export default function Country({countries}) {
     const router = useRouter();
     const id = router.query;
 
-    const mainCountry = countries.find((country) => country.name.common.toLowerCase() == id.id.toLowerCase());
+    const searchedCountries = useStore(state => state.searchedCountries)
+    
+    const mainCountry = searchedCountries.find((country) => country[0].toLowerCase() == id.id.toLowerCase());
 
     if (!mainCountry) {
         return (
           <div className="p-5">
             <p>Country not found</p> 
             <Link href="/">
-              <button className="bg-DarkBlue p-5">Back</button>
+              <button className="bg-White dark:bg-DarkBlue p-5 mt-4">Back</button>
             </Link>
           </div>
         )
@@ -32,7 +27,7 @@ export default function Country({countries}) {
     
     return (
       
-       <CountryDetail countries={countries} country={mainCountry}/>
+       <CountryDetail countries={searchedCountries} country={mainCountry}/>
     )
 
 }
