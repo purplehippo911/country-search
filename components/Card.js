@@ -5,7 +5,7 @@ const Card = ({country}) => {
     return ( 
         <Link 
             href={`countries/${country[0]}`}
-            className="bg-White dark:bg-DarkBlue p-5">
+            className="bg-White hover:bg-DarkBlue hover:text-White shadow-sm p-5 dark:bg-DarkBlue dark:hover:bg-White dark:hover:text-black">
                 <picture className="max-w-md">
                     <img src={country[23].medium} className=""/>
                 </picture>

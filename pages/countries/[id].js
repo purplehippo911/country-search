@@ -19,15 +19,22 @@ export default function Country() {
           <div className="p-5">
             <p>Country not found</p> 
             <Link href="/">
-              <button className="bg-White dark:bg-DarkBlue p-5 mt-4">Back</button>
+              <button className="btn">Back</button>
             </Link>
           </div>
         )
     }
     
     return (
-      
+       <article className="w-full p-5 m-0-auto grid justify-items-center">
+        <Link href="/" className="btn justify-self-start flex items-center">
+          <picture className="w-10">
+            <img src="../left-arrow.png" className="scale-[0.5] w-full"/>
+          </picture>
+          <button>Back</button>
+       </Link>
        <CountryDetail countries={searchedCountries} country={mainCountry}/>
+       </article>
     )
 
 }

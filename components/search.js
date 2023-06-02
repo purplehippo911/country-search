@@ -75,7 +75,7 @@ const Search = ({countries}) =>  {
             onSubmit={(e) => handleEnter(e)}
             className="grid lg:grid-cols-2"
             >
-                <section className="flex items-center content-center bg-White dark:bg-DarkBlue">
+                <section className="flex items-center content-center shadow-sm bg-White dark:bg-DarkBlue">
                     <IoIosSearch className="cursor-pointer ml-4 scale-150" onClick={(e) => handleEnter(e)}/>
                     <input
                      className="w-full px-20 py-5 outline-none bg-White dark:bg-DarkBlue"
@@ -89,7 +89,7 @@ const Search = ({countries}) =>  {
                 <section className="mt-5 md:mt-0 md:w-full md:grid md:justify-end">
                     <select name="filter" id="filter"
                      defaultValue="Filter by Region"
-                      className="bg-White dark:bg-DarkBlue w-1/2 py-5 text-center justify-self-end md:w-full md:px-10"
+                      className="bg-White shadow-sm dark:bg-DarkBlue w-1/2 py-5 text-center justify-self-end md:w-full md:px-10"
                       onChange={filterRegions}>
                         <option value="Filter by Region">Filter by Region</option>
                         <option value="Africa">Africa</option>
