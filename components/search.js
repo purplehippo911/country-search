@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react" ;
+import { useEffect, useState } from "react" ;
 
 // search-icon and store for stage manegment
 import { IoIosSearch } from "react-icons/io"
@@ -8,39 +8,43 @@ import useStore from '@store/store';
 const Search = ({countries}) =>  {
 
     const [searchValue, setSearchValue] = useState("");
+    const [countriesValue, setCountriesValue] = useState("");
     const setSearchedCountries = useStore(state => state.setSearchedCountries);
-    const searchedCountries = useStore(state => state.searchedCountries);
-
     const router = useRouter();
+
+    useEffect(() => setCountriesValue(countries), [searchValue]);
+    // console.log(countriesValue);
 
     // for search functions to search for countries
     function filterCountry(e) {
         const value = e.target.value.toLowerCase().trim();
         setSearchValue(value);
 
-        if (value && value.length > 0) {
+        if (value && value.length > 0 && countries.length != 0) {
             const filteredCountries = countries.filter(country => 
                 country[0].toLowerCase().includes(value)
             );
             setSearchedCountries(filteredCountries)
+            console.log(filteredCountries)
         } else {
-            setSearchedCountries(countries)
+            setSearchedCountries(countriesValue)
         }
         return value;
     }
 
     // filter functions
     function filterRegions(e) {
-        const value = e.target.value;
+        const filterValue = e.target.value;
 
-        if (value === "Filter by Region") {
+        if (filterValue === "Filter by Region") {
             setSearchedCountries(countries);
         } else {
             const filteredCountries = countries.filter(
-                (country) => country[10] === value
+                (country) => country[10] === filterValue
             );    
             setSearchedCountries(filteredCountries);
             console.log(filteredCountries)
+            console.log(filterValue)
         }
     }
 
@@ -50,18 +54,18 @@ const Search = ({countries}) =>  {
         // checking if the value of the searchbar is not empty
         if(searchValue != "") {
             // Check if searchvalue matches any country name
-            const searchValueExists = searchedCountries.find((country) => 
+            const searchValueExists = countries.find((country) => 
                 country[0].toLowerCase().includes(searchValue)
             );
             
             if(searchValueExists) {
                 // for if there's only one country left, so that countries page will be rendered, when the 'enter'-button is clicked
-                if(searchedCountries.length == 1) {
-                    const countryValue = searchedCountries.map(c => c[0])
+                if(countries.length == 1) {
+                    const countryValue = countries.map(c => c[0])
                     router.push(`/countries/${countryValue}`);
                 } else {
                     // Take the first country, if there's multiple left
-                    router.push(`/countries/${searchedCountries[0]}`);
+                    router.push(`/countries/${countries[0]}`);
                 }
             }
         } else {

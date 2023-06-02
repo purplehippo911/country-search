@@ -20,11 +20,10 @@ export default function Home({countries}) {
   const [isLoading, setIsLoading] = useState(true);
   const setSearchedCountries = useStore(state => state.setSearchedCountries);
   const searchedCountries = useStore(state => state.searchedCountries)
-  const countriesArray = Object.values(countries)
-  const countriesNew = countriesArray.map(country => Object.values(country))
+  const countriesArray = Object.values(countries).map(country => Object.values(country))
   
   useEffect(() => {
-    setSearchedCountries(countriesNew)
+    setSearchedCountries(countriesArray)
     setIsLoading(false)
   }, [countries]);
 
