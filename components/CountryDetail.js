@@ -56,7 +56,9 @@ const CountryDetail = ({countries, country}) => {
                                 {borderCountries.map((borderCountry) => (
                                     <Link 
                                         className="btn"
-                                        href={`/countries/${borderCountry[0]}`}>
+                                        href={`/countries/${borderCountry[0]}`}
+                                        key={borderCountry}
+                                    >
                                         <button key={borderCountry}>{borderCountry[0]}</button></Link>
                                 ))}
                             </section>
