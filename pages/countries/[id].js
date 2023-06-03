@@ -38,8 +38,9 @@ export default function Country() {
           <picture className="w-10">
             <img 
                 src="../left-arrow.png" 
-                className="scale-[0.5] w-full"/>
+                className="scale-[0.5] w-full"
                 alt="arrow pointing to the left to indicate how to go back to home"
+            />
           </picture>
           <button>Back</button>
        </Link>
