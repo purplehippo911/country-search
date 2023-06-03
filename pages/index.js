@@ -24,8 +24,7 @@ export default function Home({countries}) {
   useEffect(() => {
     setSearchedCountries(countriesArray)
     setIsLoading(false)
-  });
-
+  ,[countries]});
   
   return (
     <main>
