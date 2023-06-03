@@ -2,7 +2,6 @@ import useStore from "@store/store";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Link from 'next/link';
-import Image from "next/image";
 
 import CountryDetail from "@comps/CountryDetail";
 
@@ -21,10 +20,10 @@ export default function Country() {
             <p>Country not found</p> 
             <Link href="/" className="btn justify-self-start flex items-center w-1/4">
               <picture className="w-10">
-                <Image 
-                    src="../left-arrow.png"
+                <img 
+                    src="../left-arrow.png"          
                     className="scale-[0.5] w-full"
-                    alt="arrow pointing to the left to indicate how to go back to home"
+                    alt="arrow pointing to the left"
                 />
               </picture>
               <button>Back</button>
@@ -37,7 +36,7 @@ export default function Country() {
        <article className="w-full p-5 m-0-auto grid justify-items-center">
         <Link href="/" className="btn justify-self-start flex items-center">
           <picture className="w-10">
-            <Image 
+            <img 
                 src="../left-arrow.png" 
                 className="scale-[0.5] w-full"/>
                 alt="arrow pointing to the left to indicate how to go back to home"
