@@ -18,8 +18,11 @@ export default function Country() {
         return (
           <div className="p-5">
             <p>Country not found</p> 
-            <Link href="/">
-              <button className="btn">Back</button>
+            <Link href="/" className="btn justify-self-start flex items-center w-1/4">
+              <picture className="w-10">
+                <img src="../left-arrow.png" className="scale-[0.5] w-full"/>
+              </picture>
+              <button>Back</button>
             </Link>
           </div>
         )

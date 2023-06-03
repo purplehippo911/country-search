@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react" ;
+import { useState } from "react" ;
 
 // search-icon and store for stage manegment
 import { IoIosSearch } from "react-icons/io"

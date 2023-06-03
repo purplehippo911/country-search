@@ -24,14 +24,14 @@ const Layout = ({ children }) => {
             <nav className="bg-White text-LightText shadow-md dark:bg-DarkBlue bg:text-White p-10 m-auto mb-10">
                 <div className="container flex items-center justify-center align m-auto">
                     <Link href="/">
-                        <h1 className="text-2xl font-bold text-LightText dark:text-White">Where in the world?</h1>
+                        <h1 className="text-2xl font-bold text-LightText hover:text-DarkGray dark:text-White dark:hover:text-LightText">Where in the world?</h1>
                     </Link>
                     <picture 
                     className="flex items-center gap-3 ml-auto cursor-pointer"
                     onClick={() => ToggleDarkMode()}>
                         { isLightMode && <BsMoon /> }
-                        { isDarkMode && <BsFillMoonFill className='fill-White' />}
-                        <span className='text-xl text-LightText dark:text-White'>Dark Mode</span>
+                        { isDarkMode && <BsFillMoonFill className='fill-White hover:fill-LightText' />}
+                        <span className='text-xl text-LightText hover:text-DarkGray dark:text-White dark:hover:text-LightText'>Dark Mode</span>
                     </picture>
                 </div>
             </nav>
