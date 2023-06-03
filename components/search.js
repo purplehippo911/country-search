@@ -8,28 +8,28 @@ import useStore from '@store/store';
 const Search = ({countries}) =>  {
 
     const [searchValue, setSearchValue] = useState("");
-    const [countriesValue, setCountriesValue] = useState("");
+    const countriesArray = Object.values(countries).map(country => Object.values(country))
     const setSearchedCountries = useStore(state => state.setSearchedCountries);
     const router = useRouter();
-
-    useEffect(() => setCountriesValue(countries), [searchValue]);
-    // console.log(countriesValue);
 
     // for search functions to search for countries
     function filterCountry(e) {
         const value = e.target.value.toLowerCase().trim();
         setSearchValue(value);
 
-        if (value && value.length > 0 && countries.length != 0) {
-            const filteredCountries = countries.filter(country => 
+        if (value && value.length > 0 && countries.length !== 0) {
+
+            const filteredCountries = countriesArray.filter(country => 
                 country[0].toLowerCase().includes(value)
             );
-            setSearchedCountries(filteredCountries)
-            console.log(filteredCountries)
+            if(filteredCountries){
+                setSearchedCountries(filteredCountries)
+            } else {
+                setSearchedCountries(countries)
+            } 
         } else {
-            setSearchedCountries(countriesValue)
+            setSearchedCountries(countries)
         }
-        return value;
     }
 
     // filter functions
@@ -43,8 +43,6 @@ const Search = ({countries}) =>  {
                 (country) => country[10] === filterValue
             );    
             setSearchedCountries(filteredCountries);
-            console.log(filteredCountries)
-            console.log(filterValue)
         }
     }
 

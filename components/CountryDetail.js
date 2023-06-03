@@ -2,12 +2,14 @@ import Link from "next/link";
 
 const CountryDetail = ({countries, country}) => {
     
+    const nativeNameObject = Object.values(country[19]);
     const languageObject = Object.values(country[21]);
     const currencyObject = Object.values(country[20]).map(currency => currency);
     const rawBorderCountries = Object.values(country[18]);
     const borderCountries = countries.filter((borderCountry) => 
         rawBorderCountries.includes(borderCountry[4])
-    );
+        );
+    console.log(country)
 
     return ( 
         <article className="mt-10 container grid gap-5 lg:grid-cols-2 items-center">
@@ -20,7 +22,7 @@ const CountryDetail = ({countries, country}) => {
                         <section>
                             <p>
                                 <strong> Native Name: </strong>
-                                {country[19][0]}
+                                {nativeNameObject[0].common}
                             </p>
                             <p>
                                 <strong> Population: </strong>

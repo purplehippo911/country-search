@@ -31,7 +31,7 @@ export default function Home({countries}) {
   return (
     <main>
       <article className='container m-auto flex flex-col gap-10'>
-        <Search countries={searchedCountries}/>
+        <Search countries={countriesArray}/>
 
         {isLoading && <div>Countries are loading...</div>}
 
