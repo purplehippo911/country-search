@@ -1,6 +1,5 @@
 import useStore from '../store/store';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Search from '@comps/search'
 import Card from '@comps/Card'
@@ -25,7 +24,7 @@ export default function Home({countries}) {
   useEffect(() => {
     setSearchedCountries(countriesArray)
     setIsLoading(false)
-  }, [countries]);
+  });
 
   
   return (
