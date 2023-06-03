@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const CountryDetail = ({countries, country}) => {
     
@@ -9,12 +10,14 @@ const CountryDetail = ({countries, country}) => {
     const borderCountries = countries.filter((borderCountry) => 
         rawBorderCountries.includes(borderCountry[4])
         );
-    console.log(country)
 
     return ( 
         <article className="mt-10 container grid gap-5 lg:grid-cols-2 items-center">
                     <picture className="justify-self-center scale-12">
-                        <img src={country[23].large}/>
+                        <Image
+                            src={country[23].large}
+                            alt="A large flag of the country or state"
+                        />
                     </picture>
 
                     <section className="flex flex-col md:grid grid-cols-1 gap-4 lg:grid-cols-2">
