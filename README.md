@@ -32,7 +32,11 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+Mobile:
+![Mobile Screenshot](./public/screenshots/mobileScreenshot.png)
+
+Desktop:
+![Mobile Screenshot](./public/screenshots/desktopScreenshot.png)
 
 
 ### Links
@@ -54,31 +58,28 @@ Users should be able to:
 - [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) - React state management
 
 ### What I learned
-
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
+I got to brush up on my knowledge about array methods, because I was working a lot with them, when I was rendering the country's information from the API. Learnt some basic NextJS and replaced `img`-element with Next's `Image`-element, to easier render images. Also got to learn some about object methods.
 
 
 ### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+I'll focus on learning React Native and Firebase to make a productivity app. 
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [NextJS Crashcourse by NetNinja](https://www.youtube.com/playlist?list=PL4cUxeGkcC9g9gP2onazU5-2M-AzA8eBw) - This helped me get started with NextJS. I really liked this channel and will use it going forward.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Purplehippo's website](https://purplehipposwebsite.netlify.app)
+- Frontend Mentor - [@purplehippo911](https://www.frontendmentor.io/profile/purplehippo911)
+- Twitter - [@muggie43](https://twitter.com/muggie43)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
 ## Acknowledgments
 
+This guys version of the app helped me when I was stuck:
 [Yusufneeson](https://github.com/yusufneeson/rest-countries/blob/main/src/components/Countries/Countries.jsx)
 
 
+Where I got this icon from: 
 [Left arrow icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/left-arrow)
