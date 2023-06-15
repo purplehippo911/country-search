@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const Card = ({country}) => {
 
@@ -7,7 +8,9 @@ const Card = ({country}) => {
             href={`countries/${country[0]}`}
             className="bg-White hover:bg-DarkBlue hover:text-White shadow-sm p-5 dark:bg-DarkBlue dark:hover:bg-White dark:hover:text-black">
                 <picture className="max-w-md">
-                    <img src={country[23].medium} className=""/>
+                    <Image 
+                        src={country[23].medium}
+                        alt="a flag of the country or state"/>
                 </picture>
                 <section>
                     <h3 className="font-bold text-2xl">{country[0]}</h3>
