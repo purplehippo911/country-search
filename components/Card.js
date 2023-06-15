@@ -10,7 +10,11 @@ const Card = ({country}) => {
                 <picture className="max-w-md">
                     <Image 
                         src={country[23].medium}
-                        alt="a flag of the country or state"/>
+                        alt="a flag of the country or state"
+                        width={200}
+                        height={300}
+                        className="h-auto"
+                    />
                 </picture>
                 <section>
                     <h3 className="font-bold text-2xl">{country[0]}</h3>

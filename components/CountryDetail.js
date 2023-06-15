@@ -17,6 +17,8 @@ const CountryDetail = ({countries, country}) => {
                         <Image
                             src={country[23].large}
                             alt="A large flag of the country or state"
+                            width={500}
+                            height={300}
                         />
                     </picture>
 
