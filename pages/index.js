@@ -5,7 +5,6 @@ import { useState } from 'react';
 import Search from '@comps/search'
 import Card from '@comps/Card'
 
-// fields=flag,name,region,population,capital,alpha3Code 
 export const getServerSideProps = async () => {
   const key = "6dbtGyWkDunGozjumEHsSrSkdpQ1yr5kbEfJ5mUC"
   const res = await fetch(`https://countryapi.io/api/all?apikey=${key}`);
